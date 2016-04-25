@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions version="1.0">
+ <group name="paynl">
+  <string name="module_title">Pay.nl</string>
+  <string name="paynl_transaction"><![CDATA[Pay.nl Transactie]]></string>
+  <string name="paymentmethod"><![CDATA[Betaalmethode]]></string>
+  <string name="select_paymentmethod"><![CDATA[Selecteer een betaalmethode]]></string>
+  <string name="status_settings"><![CDATA[Betalingsstatus vertalen naar order status]]></string>
+  <string name="payment_is"><![CDATA[Betaling is:]]></string>
+  <string name="orderstatus_becomes"><![CDATA[Order status wordt:]]></string>
+  
+  <string name="position_info"><![CDATA[Hier bepaalt u waar deze betaalmethode in de lijst van betalingsmethoden voorkomt wanneer een klant gaat betalen. Vul een nummer in; hoe hoger het nummer, hoe later hij in de lijst voor komt.]]></string>
+  <string name="api_token_info"><![CDATA[U kunt uw API token vinden op <a href="https://admin.pay.nl/my_merchant" target="_blank">https://admin.pay.nl/my_merchant</a> (aan de onderkant).]]></string>
+  <string name="service_id_info"><![CDATA[U kunt uw service id vinden op <a href="https://admin.pay.nl/programs/programs" target="_blank">https://admin.pay.nl/programs/programs</a>. De service id begint met <strong>SL-</strong>.]]></string>
+    
+  <string name="merchant_fees"><![CDATA[Betaalkosten per betaalmogelijkheid, in centen]]></string>
+  <string name="no_or_wrong_credentials"><![CDATA[Kon deze betalingwijze niet verifiëren omdat de API token en service ID niet of foutief is ingevuld.]]></string>
+  
+  <string name="PAID"><![CDATA[Betaald]]></string>
+  <string name="PENDING"><![CDATA[In behandeling]]></string>
+  <string name="CANCEL"><![CDATA[Geannuleerd]]></string>
+  <string name="FAILED"><![CDATA[Mislukt]]></string>
+ </group>
+</definitions>

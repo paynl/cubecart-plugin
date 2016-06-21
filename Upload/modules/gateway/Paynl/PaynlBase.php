@@ -40,7 +40,7 @@ class PaynlBase
   public function transfer()
   {
     $transfer = array(
-      'action' => 'index.php?_g=rm&amp;type=gateway&amp;cmd=process&amp;module='. $this->moduleName .'&amp;payWithMethod=true',
+      'action' => 'index.php?_g=rm&type=gateway&cmd=process&module='. $this->moduleName .'&payWithMethod=true',
       'method' => 'post',
       'target' => '_self',
       'submit' => 'auto',
@@ -317,10 +317,10 @@ class PaynlBase
     $this->objStartApi->setServiceId( $this->_module['service_id'] );
 
     // return to this url after payment
-    $this->objStartApi->setFinishUrl( $GLOBALS['storeURL']. '/index.php?_g=rm&amp;type=gateway&amp;cmd=process&amp;module='. $this->moduleName);
+    $this->objStartApi->setFinishUrl( $GLOBALS['storeURL']. '/index.php?_g=rm&type=gateway&cmd=process&module='. $this->moduleName);
 
     //IPN URL
-    $this->objStartApi->setExchangeUrl( $GLOBALS['storeURL']. '/index.php?_g=rm&amp;type=gateway&amp;cmd=call&amp;module='. $this->moduleName);
+    $this->objStartApi->setExchangeUrl( $GLOBALS['storeURL']. '/index.php?_g=rm&type=gateway&cmd=call&module='. $this->moduleName);
     
     /*
      * add order information for AfterPay, this means customer information

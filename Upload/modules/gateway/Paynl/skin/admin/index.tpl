@@ -12,8 +12,8 @@
           <div style="height:17px;color:#999"><label>&nbsp;</label><span style="clear:both">{$LANG.paynl.position_info}</span></div>
           <div>&nbsp;</div>
     <div><label for="default">{$LANG.common.default}</label><span><input type="hidden" name="module[default]" id="default" class="toggle" value="{$MODULE.default}" /></span></div>
-      <div><label for="default">Description</label><span><input name="module[desc]" id="desc" class="textbox" type="text" value="{$MODULE.desc}" /></span></div>
-        <div style="height:17px;color:#999"><label>&nbsp;</label><span>Als u het logo van de betaalmethode wilt tonen vul dan dit in: {$merchantImage}</span></div>
+      <div><label for="default">Description</label><span><input name="module[desc]" id="desc" class="textbox" type="text" value="{$MODULE.desc|default:{$MODULE.folder}}" /></span></div>
+        <div style="height:17px;color:#999"><label>&nbsp;</label><span>Voer de naam in van de betaalmethode zoals deze in de checkout moet worden weergegeven.</span></div>
 	  <div><label for="apitoken">API token</label><span><input type="text" name="module[apitoken]" id="apitoken" class="textbox" value="{$MODULE.apitoken|default:''}" /></span></div>
           <div style="height:17px;color:#999"><label>&nbsp;</label><span>{$LANG.paynl.api_token_info}</span></div>
 	  <div><label for="service_id">Service ID</label><span><input type="text" name="module[service_id]" id="service_id" class="textbox" value="{$MODULE.service_id|default:''}" /></span></div>

@@ -310,24 +310,24 @@ class PaynlBase
   public function createTransaction($intMethodId)
   {
     $strCartOrderId = $this->_basket['cart_order_id'];
-    
-    $this->objStartApi = new Pay_Api_Start();
-    // token en serviceId setten
-    $this->objStartApi->setApiToken( $this->_module['apitoken'] );
-    $this->objStartApi->setServiceId( $this->_module['service_id'] );
 
-    // return to this url after payment
+    $this->objStartApi = new Pay_Api_Start();
+
+    # Token en serviceId setten
+    $this->objStartApi->setApiToken($this->_module['apitoken'] );
+    $this->objStartApi->setServiceId($this->_module['service_id'] );
+
+    # Return to this url after payment
     $this->objStartApi->setFinishUrl( $GLOBALS['storeURL']. '/index.php?_g=rm&type=gateway&cmd=process&module='. $this->moduleName);
 
     //IPN URL
     $this->objStartApi->setExchangeUrl( $GLOBALS['storeURL']. '/index.php?_g=rm&type=gateway&cmd=call&module='. $this->moduleName);
     
     /*
-     * add order information for AfterPay, this means customer information
+     * Add order information for AfterPay, this means customer information
      * as wel as all the products
      */
-   
-    
+
     /*
      *  Add customer info
      */
@@ -389,56 +389,40 @@ class PaynlBase
         $arrTaxCodes[ $product['tax_type'] ]
       );
     }
-    
-    //add taxes
-    if( isset($this->_basket['total_tax']) && (float) $this->_basket['total_tax'])
-    {
-      $this->objStartApi->addProduct(
-        0,
-        'taxes',
-        $this->toCents( $this->_basket['total_tax'] ),
-        '1',
-        'N'
-      );
-    }
-    
-    //add shiping costs
-    $shipping = @$this->_basket['shipping'];
-    if(isset($shipping['value']) && (float) $shipping['value'])
-    {
-      $this->objStartApi->addProduct(
-        0,
-        $shipping['name'],
-        $this->toCents( $shipping['value'] ),
-        1,
-        'N'
-      );
-    }
-    
-    //add coupons
-    $couponId = 1;
-    foreach($this->_basket['coupons'] as $coupon)
-    {
-      $this->objStartApi->addProduct(
-        ++$couponId,
-        $coupon['voucher'],
-        $this->toCents( '-' . $coupon['value_display'] ),
-        1,
-        'N'
-      );
-    }
+
+      # Add taxes
+      if (isset($this->_basket['total_tax']) && (float)$this->_basket['total_tax']) {
+          $this->objStartApi->addProduct(0, 'taxes', $this->toCents($this->_basket['total_tax']), '1', 'N');
+      }
+
+      # Add shiping costs
+      $shipping = @$this->_basket['shipping'];
+      if (isset($shipping['value']) && (float)$shipping['value']) {
+          $this->objStartApi->addProduct(0, $shipping['name'], $this->toCents($shipping['value']), 1, 'N');
+      }
+
+      # Add coupons
+      $couponId = 1;
+      foreach ($this->_basket['coupons'] as $coupon) {
+          $this->objStartApi->addProduct(++$couponId, $coupon['voucher'], $this->toCents('-' . $coupon['value_display']), 1, 'N');
+      }
     
     $this->objStartApi->setPaymentOptionId( $intMethodId );
     $this->setAmount( $this->_basket['total'] );
 
     /* description is used by afterpay to store the order id. This is also used
      * as a description with a bank transfer. */
-    $this->objStartApi->setDescription( $this->_basket['cart_order_id'] );
+      $this->objStartApi->setDescription($strCartOrderId);
 
-    //save the cubecart orderid so we can refer to this when the pay.nl exchange pings back
-    $this->objStartApi->setExtra1( $this->_basket['cart_order_id'] );
+      $ccVersion = defined('CC_VERSION') ? CC_VERSION : '-';
+      $phpVersion = substr(phpversion(), 0, 3);
+      $this->objStartApi->setObject(substr('cubecart 1.0.2 | ' . $ccVersion . ' | ' . $phpVersion, 0, 64));
+
+      $this->objStartApi->setOrderNumber($strCartOrderId);
+
+      # Save the cubecart orderid so we can refer to this when the pay.nl exchange pings back
+      $this->objStartApi->setExtra1($strCartOrderId);
     
-    //create transaction
     return $this->objStartApi->doRequest();
   }
   

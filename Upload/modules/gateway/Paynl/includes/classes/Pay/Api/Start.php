@@ -12,21 +12,22 @@ class Pay_Api_Start extends Pay_Api {
   
     private $_exchangeUrl;
     private $_description;
+    private $_orderNumber;
     private $_enduser;
     private $_extra1;
     private $_extra2;
     private $_extra3;
-    
+
     private $_promotorId;
     private $_info;
     private $_tool;
     private $_object;
     private $_domainId;
     private $_transferData;
-    
+
     private $_products = array();
 
-    
+
     public function setPromotorId($promotorId){
         $this->_promotorId = $promotorId;
     }
@@ -39,14 +40,14 @@ class Pay_Api_Start extends Pay_Api {
     public function setObject($object){
         $this->_object = $object;
     }
- 
+
     public function setTransferData($transferData){
         $this->_transferData = $transferData;
     }
     /**
      * Add a product to an order
      * Attention! This is purely an adminstrative option, the amount of the order is not modified.
-     * 
+     *
      * @param string $id
      * @param string $description
      * @param int $price
@@ -79,7 +80,7 @@ class Pay_Api_Start extends Pay_Api {
 
     /**
      * Set the enduser data in the following format
-     * 
+     *
      * array(
      *  initals
      *  lastName
@@ -119,7 +120,7 @@ class Pay_Api_Start extends Pay_Api {
 
     /**
      * Set the amount(in cents) of the transaction
-     * 
+     *
      * @param int $amount
      * @throws Pay_Exception
      */
@@ -149,7 +150,7 @@ class Pay_Api_Start extends Pay_Api {
 
     /**
      * Set the url where the user will be redirected to after payment.
-     * 
+     *
      * @param string $finishUrl
      */
     public function setFinishUrl($finishUrl) {
@@ -158,14 +159,17 @@ class Pay_Api_Start extends Pay_Api {
 
     /**
      * Set the comunication url, the pay.nl server will call this url when the status of the transaction changes
-     * 
+     *
      * @param string $exchangeUrl
      */
     public function setExchangeUrl($exchangeUrl) {
         $this->_exchangeUrl = $exchangeUrl;
     }
 
-  
+    public function setOrderNumber($orderNumber)
+    {
+        $this->_orderNumber = $orderNumber;
+    }
 
     public function setExtra1($extra1) {
         $this->_extra1 = $extra1;
@@ -208,7 +212,7 @@ class Pay_Api_Start extends Pay_Api {
         } else {
             $data['amount'] = $this->_amount;
         }
-        if (!empty($this->_paymentOptionId)) {  
+        if (!empty($this->_paymentOptionId)) {
             $data['paymentOptionId'] = $this->_paymentOptionId;
         }
         if (empty($this->_finishUrl)) {
@@ -216,7 +220,7 @@ class Pay_Api_Start extends Pay_Api {
         } else {
             $data['finishUrl'] = $this->_finishUrl;
         }
-        if (!empty($this->_exchangeUrl)) {    
+        if (!empty($this->_exchangeUrl)) {
             $data['transaction']['orderExchangeUrl'] = $this->_exchangeUrl;
         }
 
@@ -224,7 +228,10 @@ class Pay_Api_Start extends Pay_Api {
             $data['transaction']['description'] = $this->_description;
         }
 
-       
+        if (!empty($this->_orderNumber)) {
+           $data['transaction']['orderNumber'] = $this->_orderNumber;
+        }
+
 
         if (!empty($this->_paymentOptionSubId)) {
             $data['paymentOptionSubId'] = $this->_paymentOptionSubId;
@@ -284,7 +291,7 @@ class Pay_Api_Start extends Pay_Api {
         if(!empty($this->_transferData)){
             $data['statsData']['transferData'] = $this->_transferData;
         }
-        
+
         return $data;
     }
 

@@ -5,6 +5,7 @@ $smarty->assign('merchantName', $merchantName);
 
 // define the image shown to the customer
 $merchantImage = str_ireplace($_SERVER['DOCUMENT_ROOT'],'', dirname($modulePath)) .'/logo.png';
+$merchantImage = strstr($merchantImage, '/module');
 if(substr($merchantImage, 0, 1) !== '/') $merchantImage = '/'. $merchantImage;
 $smarty->assign('merchantImage', $merchantImage);
 

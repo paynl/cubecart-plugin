@@ -416,7 +416,7 @@ class PaynlBase
 
       $ccVersion = defined('CC_VERSION') ? CC_VERSION : '-';
       $phpVersion = substr(phpversion(), 0, 3);
-      $this->objStartApi->setObject(substr('cubecart 1.0.2 | ' . $ccVersion . ' | ' . $phpVersion, 0, 64));
+      $this->objStartApi->setObject(substr('cubecart 1.0.3 | ' . $ccVersion . ' | ' . $phpVersion, 0, 64));
 
       $this->objStartApi->setOrderNumber($strCartOrderId);
 

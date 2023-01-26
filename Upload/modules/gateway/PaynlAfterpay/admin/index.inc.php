@@ -3,7 +3,7 @@ if(!defined('CC_DS')) die('Access Denied');
 
 
 $merchantId = 739; 
-$merchantName = 'AfterPay'; 
+$merchantName = 'Riverty (was AfterPay)';
 
 
 $modulePath = __FILE__;

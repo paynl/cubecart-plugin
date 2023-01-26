@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<installer version="1.0">
+  <info>
+	<uid>support@pay.nl</uid>
+	<type>gateway</type>
+	<name><![CDATA[Podium Cadeaukaart via Pay.]]></name>
+	<description><![CDATA[Betalen via Pay.]]></description>
+	<version>1.0.0</version>
+	<minVersion>5.0.0a</minVersion>
+	<maxVersion>5.0.*</maxVersion>
+	<creator><![CDATA[pay.nl]]></creator>
+	<homepage><![CDATA[http://www.pay.nl]]></homepage>
+	<block>false</block>
+  </info>
+</installer>

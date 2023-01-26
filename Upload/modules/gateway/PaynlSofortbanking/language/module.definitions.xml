@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <definitions version="1.0">
  <group name="paynl">
-  <string name="module_title">Pay.nl</string>
-  <string name="paynl_transaction"><![CDATA[Pay.nl Transactie]]></string>
+  <string name="module_title">Pay.</string>
+  <string name="paynl_transaction"><![CDATA[Pay. Transactie]]></string>
   <string name="paymentmethod"><![CDATA[Betaalmethode]]></string>
   <string name="select_paymentmethod"><![CDATA[Selecteer een betaalmethode]]></string>
   <string name="status_settings"><![CDATA[Betalingsstatus vertalen naar order status]]></string>

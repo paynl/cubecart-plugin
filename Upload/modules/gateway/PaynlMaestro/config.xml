@@ -3,8 +3,8 @@
   <info>
 	<uid>support@pay.nl</uid>
 	<type>gateway</type>
-	<name><![CDATA[Maestro via Pay.nl]]></name>
-	<description><![CDATA[Betalen via pay.nl]]></description>
+	<name><![CDATA[Maestro via Pay.]]></name>
+	<description><![CDATA[Betalen via Pay.]]></description>
 	<version>1.0.0</version>
 	<minVersion>5.0.0a</minVersion>
 	<maxVersion>5.0.*</maxVersion>

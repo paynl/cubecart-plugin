@@ -3,7 +3,7 @@ if(!defined('CC_DS')) die('Access Denied');
 
 
 $merchantId = 436; 
-$merchantName = 'MisterCash / Bancontact'; 
+$merchantName = 'Bancontact';
 
 
 $modulePath = __FILE__;
